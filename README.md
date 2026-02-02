@@ -7,24 +7,14 @@ This is the company website project for Logic Systems Software Pvt. Ltd., featur
 ```
 GNS/
 ├── Backend/
-│   ├── src/                # Node.js backend
-│   │   ├── controllers/    # Request handlers
-│   │   ├── models/         # Data models
-│   │   ├── routes/         # API routes
-│   │   ├── middleware/     # Custom middleware
-│   │   ├── config/         # Configuration files
-│   │   ├── utils/          # Utility functions
-│   │   └── server.js       # Node.js entry point
-│   ├── app/                # Python backend
+│   ├── app/                # Python (FastAPI) backend
 │   │   ├── api/v1/         # API routes (v1)
 │   │   ├── core/           # Core configuration
 │   │   ├── models/         # Data models
 │   │   ├── schemas/        # Pydantic schemas
 │   │   └── services/       # Business logic
-│   ├── main.py             # Python entry point (FastAPI)
 │   ├── requirements.txt    # Python dependencies
-│   ├── public/             # Static files
-│   └── package.json        # Node.js dependencies
+│   └── public/             # Static files (optional) 
 │
 └── Frontend/
     ├── src/
@@ -48,10 +38,10 @@ GNS/
 
 ### Prerequisites
 
-- Node.js (v16 or higher) - for Node.js backend
-- npm or yarn - for Node.js backend
-- Python 3.8+ - for Python backend (alternative)
-- pip - for Python backend (alternative)
+- Node.js (v16 or higher) - for building the Frontend
+- npm or yarn - for building the Frontend
+- Python 3.8+ - for FastAPI backend
+- pip - for Python backend (to install dependencies) 
 
 ### Backend Setup
 
@@ -62,7 +52,7 @@ cd Backend
 
 2. Install dependencies:
 ```bash
-npm install
+pip install -r requirements.txt
 ```
 
 3. Create a `.env` file from `.env.example`:
@@ -72,7 +62,7 @@ cp .env.example .env
 
 4. Start the development server:
 ```bash
-npm run dev
+uvicorn app.main:app --reload --port 5000
 ```
 
 The backend server will run on `http://localhost:5000`
@@ -142,12 +132,12 @@ The frontend will run on `http://localhost:3000`
 
 ## Technologies Used
 
-### Backend (Node.js)
-- Node.js
-- Express.js
+### Backend (Python)
+- Python 3.8+
+- FastAPI
+- Uvicorn
+- python-dotenv
 - CORS
-- Morgan (HTTP request logger)
-- dotenv
 
 ### Backend (Python - Alternative)
 - Python 3.8+
@@ -166,23 +156,21 @@ The frontend will run on `http://localhost:3000`
 
 - ✅ Modern React frontend with Vite
 - ✅ Tailwind CSS for styling
-- ✅ Express.js backend API
+- ✅ FastAPI backend API
 - ✅ CORS enabled for cross-origin requests
 - ✅ Environment variable support
 - ✅ Development and production configurations
 
 ## Development
 
-- Backend (Node.js): `npm run dev` (uses nodemon for auto-reload)
-- Backend (Python): `python main.py` or `uvicorn main:app --reload` (auto-reload enabled)
+- Backend (Python): `uvicorn app.main:app --reload` (auto-reload enabled)
 - Frontend: `npm run dev` (uses Vite dev server with HMR)
 
 ## Backend Options
 
-You can use either the Node.js (Express.js) or Python (FastAPI) backend:
+Backend API (FastAPI):
 
-- **Node.js Backend**: Located in `Backend/src/server.js`
-- **Python Backend**: Located in `Backend/main.py`
+- **Python (FastAPI) Backend**: Located in `Backend/app/main.py`
 
 ## License
 
