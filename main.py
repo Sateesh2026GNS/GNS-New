@@ -1,5 +1,5 @@
 """
-Logic Systems Pvt. Ltd. - Backend API
+GNS SOFTWARE Pvt. Ltd. - Backend API
 Python FastAPI Backend Server
 """
 
@@ -47,7 +47,7 @@ except ImportError:
 async def root():
     """Root endpoint"""
     return {
-        "message": "Welcome to Logic Systems Pvt. Ltd. API",
+        "message": "Welcome to GNS SOFTWARE Pvt. Ltd. API",
         "version": "1.0.0",
         "status": "running"
     }
@@ -86,7 +86,7 @@ async def internal_server_error_handler(request: Request, exc: Exception):
 
 
 if __name__ == "__main__":
-    port = int(os.getenv("PORT", 5000))
+    port = int(os.getenv("PORT", 8080))
     debug = os.getenv("NODE_ENV", "development") == "development"
     
     uvicorn.run(
