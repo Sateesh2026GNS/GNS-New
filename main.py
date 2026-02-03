@@ -17,8 +17,8 @@ load_dotenv()
 
 # Initialize FastAPI app
 app = FastAPI(
-    title="LogicPuse Software Pvt. Ltd. API",
-    description="Backend API for Logic Systems Pvt. Ltd. Company Website",
+    title="GNS Software Pvt. Ltd. API",
+    description="Backend API for GNS Software Pvt. Ltd. Company Website",
     version="1.0.0"
 )
 
@@ -59,7 +59,7 @@ async def health_check():
     return {
         "status": "OK",
         "timestamp": datetime.now().isoformat(),
-        "service": "LogicPuse API"
+        "service": "GNS API"
     }
 
 
