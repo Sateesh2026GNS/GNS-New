@@ -1,14 +1,32 @@
 import os
 from pathlib import Path
 from fastapi import FastAPI, Request
+from app.schemas.contact import ContactForm
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse, JSONResponse
 from app.api.v1.routes import router as v1_router
 
 app = FastAPI(title="GNS API (FastAPI)")
 
+# CORS - allow frontend (e.g. localhost:3000) to call the API
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 # Include API routes first so they take precedence over the SPA fallback
 app.include_router(v1_router)
+
+
+@app.post("/api/contact")
+async def contact(body: ContactForm):
+    """Handle contact form submissions. Requires JSON body with name, email, and message."""
+    # TODO: Send email via SMTP if configured (see README_EMAIL_SETUP.md)
+    return {"success": True, "message": "Message received successfully"}
 
 # Serve frontend static files (built into `frontend/dist` by the Dockerfile)
 FRONTEND_DIR = Path("frontend/dist")
